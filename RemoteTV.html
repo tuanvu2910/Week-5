@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let Television = function (channel, volume){
+        this.channel = channel;
+        this.volume = volume;
+
+        this.upChannel = function () {
+            this.channel++;
+        };
+        this.downChannel = function () {
+            this.channel--;
+        };
+        this.downVolume = function () {
+            this.volume--;
+        };
+        this.upVolume = function () {
+            this.volume++;
+        }
+
+    };
+    let Remote = function () {
+        this.tivi = Television;
+        this.connectTelevision = function (tv) {
+            this.tv = tv;
+        };
+        this.up = function () {
+            this.tivi.upChannel();
+        }
+        this.down = function () {
+            this.tivi.downChannel();
+        }
+    };
+    let theRemote = new Remote();
+    let theTv = new Television(1, 2);
+    theRemote.connectTelevision(theTv);
+    console.log(theTv.channel);
+    theRemote.down();
+    console.log(theTv.channel);
+</script>
+</body>
+</html>
